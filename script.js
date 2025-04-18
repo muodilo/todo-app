@@ -32,4 +32,25 @@ function generateFakeDate() {
     return future.toISOString().slice(0, 16);
 }
 
+function renderTodos() {
+    todoList.innerHTML = "";
+
+    const filteredTodos = filterCompletedCheckbox.checked
+        ? todos.filter(todo => todo.completed)
+        : todos;
+
+    if (filteredTodos.length === 0) {
+        const emptyMsg = document.createElement("div");
+        emptyMsg.className = "text-center text-gray-500 mt-10";
+        emptyMsg.innerHTML = `<p class="text-xl font-medium">📝 No tasks yet</p>`;
+        todoList.appendChild(emptyMsg);
+        return;
+    }
+
+    filteredTodos.forEach(todo => {
+        const li = document.createElement("li");
+        li.className = "bg-white px-4 py-2 rounded shadow flex justify-between items-center gap-4";
+        
+    });
+}
 
