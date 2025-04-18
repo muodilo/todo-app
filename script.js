@@ -26,3 +26,10 @@ async function fetchTodos() {
     }
 }
 
+function generateFakeDate() {
+    const now = new Date();
+    const future = new Date(now.getTime() + Math.random() * 7 * 24 * 60 * 1000);
+    return future.toISOString().slice(0, 16);
+}
+
+
