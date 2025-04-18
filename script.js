@@ -9,3 +9,20 @@ const filterCompletedCheckbox = document.getElementById('filter-completed');
 
 let todos = [];
 let isAscending = true;
+
+async function fetchTodos() {
+    try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+        const data = await res.json();
+        todos = data.map(todo => ({
+            id: todo.id,
+            title: todo.title,
+            dueDate: generateFakeDate(),
+            completed: todo.completed
+        }));
+        renderTodos();
+    } catch (error) {
+        console.error("Error fetching todos:", error);
+    }
+}
+
